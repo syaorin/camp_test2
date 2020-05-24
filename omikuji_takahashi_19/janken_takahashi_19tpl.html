@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+    <title>じゃんけん</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>じゃんけん</h1>
+    </header>
+
+    <main>
+        <ul>
+        
+            <li><input type="radio" name="jibunn" value="グー" onclick="myhand (0)">グー</li>
+            <li><input type="radio" name="jibunn" value="チョキ" onclick="myhand (1)">チョキ</li>
+            <li><input type="radio" name="jibunn" value="パー" onclick="myhand (2)">パー</li>
+        </ul>
+
+        <div>あなたの出した手は？「<span id="jibunn">なに？</span>」</div>
+        <div>コンピュータの出した手は？「<span id="pc_hand">なに？</span>」</div>
+        <div id="judgment">勝ち</div>
+        <img id="shouhai_gzaou" src="img/syokigazou.PNG" alt="" width="400px">
+        
+    
+    <footer></footer>
+    <script>
+           hand = new Array("グー","チョキ","パー") ;  //じゃんけんの手が文字で表示される設定
+           victory = new Array("勝ち","あいこ","負け") ; //じゃんけんの勝敗が文字で表示される設定
+
+            function myhand(btm) {
+            var r = Math.floor( math.random()*3); 　// パソコンが出した手の設定
+
+            document.getElementById("jibunn").innerHTML=hand[btm];    // 自分が出した手が表示される
+            document.getElementById("pc_hand").innerHTML=hand[r]; // パソコンが出した手が表示される
+
+            
+
+        
+        // 勝敗の設定　if分岐処理　勝った場合は0、負けた場合は2、あいこは1
+        //グーは０、チョキは１、パーは２　
+        var num ;
+        var judge_img ;
+
+        // 勝敗の画像
+        var win_img ="file:///C:/Users/ai-Takahashi/Desktop/bootcamp/camp_02/js-learning-sample-master%20(1)/js-learning-sample-master/omikuji_takahashi_19/img/win.PNG";
+        var lose_img ="file:///C:/Users/ai-Takahashi/Desktop/bootcamp/camp_02/js-learning-sample-master%20(1)/js-learning-sample-master/omikuji_takahashi_19/img/lose.PNG";
+　　　
+        //グー
+        if(btm == 0 && r== 0) {num = 1;
+            
+        }
+
+        if(btm == 0 && r== 1) {num = 0;
+            judge_img = win_img 
+        }
+             
+        if(btm == 0 && r== 2) {num = 2;
+            judge_img = lose_img;
+        }
+
+        //チョキ
+        if(btm == 1 && r== 0) {num = 2;
+            judge_img = lose_img;
+        }
+        if(btm == 1 && r== 2) {num = 0;
+            judge_img = win_img 
+        }
+
+        if(btm == 1 && r== 1) {num = 1;
+        }
+
+
+        //パー
+        if(btm == 2 && r== 0) {num = 0;
+            judge_img = win_img 
+        }
+        if(btm == 2 && r== 1) {num = 2;
+            judge_img = lose_img;
+        }
+        if(btm == 2 && r== 2) {num = 1;
+        }
+
+        //勝敗の表示
+        document.getElementById("judgment").innerHTML= victory[num] ;　
+        document.getElementById("shouhai_gzaou").src = judge_img ;
+　　　
+        }
+
+    </script>
+</body>
+
+</html>
